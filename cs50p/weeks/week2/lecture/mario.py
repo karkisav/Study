@@ -1,6 +1,6 @@
 def main():
-    print_cols(3)
+    print_row(4)
 
-def print_cols(height):
-        print("#\n" * height, end="")
+def print_row(width):
+        print("?" * width)
 main()
