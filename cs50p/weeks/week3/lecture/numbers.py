@@ -2,8 +2,6 @@ def main():
     num = get_int()
     print(f"x is {num}")
 
-
-
 def get_int():    
     while True:
         try:
