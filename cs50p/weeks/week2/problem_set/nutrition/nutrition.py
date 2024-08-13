@@ -25,10 +25,8 @@ raw_fruits = {
     "Watermelon": "80",
 }
 
-raw_fruits = {key.lower(): value for key, value in raw_fruits.items()}
-
 def calories(food):
-    food = food.lower()
+    food = food.title()
     if food in raw_fruits:
         print(f"Calories: {raw_fruits[food]}")
         return
