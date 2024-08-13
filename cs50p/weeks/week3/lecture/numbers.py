@@ -9,7 +9,6 @@ def get_int():
         except ValueError:
             print("x is NOT an Int please put an Int (Integer)")
         else:
-            break
-    return x
+            return x
 
 main()
