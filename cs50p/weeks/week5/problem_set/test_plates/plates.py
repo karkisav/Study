@@ -12,11 +12,10 @@ def is_valid(s):
     str_len = len(s)
     if str_len > 6 or str_len <= 2:
         return False
-
+    
     # starts with two letters
-    for i in range(0,2):
-        if not s[i].isalpha():
-            return False
+    if not s[:2].isalpha():
+        return False
         
     # check if number in between letters
     check_num_start = False
