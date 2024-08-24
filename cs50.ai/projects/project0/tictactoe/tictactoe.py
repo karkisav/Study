@@ -142,6 +142,7 @@ def minimax(board):
 
 
 def max_value(board, alpha, beta):
+    
     if terminal(board):
         return utility(board), None
     
@@ -160,8 +161,10 @@ def max_value(board, alpha, beta):
     
 
 def min_value(board, alpha, beta):
+
     if terminal(board):
         return utility(board), None
+    
     v = float('inf')
     best_action = None
     
