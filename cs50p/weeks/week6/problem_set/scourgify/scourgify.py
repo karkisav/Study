@@ -23,7 +23,7 @@ def sourgify(read_file, write_file):
     with open(read_file, "r") as file:
         reader = csv.DictReader(file)
         for row in reader:
-            row["name"] = [name.strip() for name in row["name"].split(",")]
+            row["name"] = [name.strip() for name in row["name"].split(",")] # removing and all white spaces
             students.append({"first": row["name"][1], "last": row["name"][0], "house": row["house"]})
 
     with open(write_file, "w") as file:
