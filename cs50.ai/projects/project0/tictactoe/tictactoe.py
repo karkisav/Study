@@ -41,7 +41,7 @@ def player(board):
     elif X_count == O_count:
         return "X"
     
-    return "X"
+    return "X"  
 
 
 def actions(board):
