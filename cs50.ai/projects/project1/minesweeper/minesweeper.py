@@ -196,25 +196,26 @@ class MinesweeperAI():
 
         unknown_neighbours = set()
         mine_neighbours = set()
+
         for i in range(cell[0] - 1, cell[0] + 2):
             for j in range(cell[1] - 1, cell[1] + 2):
 
                 # Ignore the cell itself
                 if (i, j) == cell:
                     continue
-                    
+
+                # Update count if cell in bounds and is mine
                 if 0 <= i < self.height and 0 <= j < self.width:
                     if (i, j) in self.mines:
                         mine_neighbours.add((i, j))
-                    elif (i, j) not in self.safes:
+                    elif (i, j) not in self.mines:
                         unknown_neighbours.add((i, j))
 
-
         count -= len(mine_neighbours)
+        
         if unknown_neighbours:
-            new_sentence = Sentence(unknown_neighbours, count)
-            self.knowledge.append(new_sentence)
-
+            self.knowledge.append(Sentence(unknown_neighbours, count))
+            
         while True:
             progress = False
 
