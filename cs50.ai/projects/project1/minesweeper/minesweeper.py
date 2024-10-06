@@ -204,11 +204,11 @@ class MinesweeperAI():
                 if (i, j) == cell:
                     continue
 
-                # Update count if cell in bounds and is mine
+                # Update if cell in bounds and is mine or if it is an unknown
                 if 0 <= i < self.height and 0 <= j < self.width:
                     if (i, j) in self.mines:
                         mine_neighbours.add((i, j))
-                    elif (i, j) not in self.mines:
+                    elif (i, j) not in self.safes:
                         unknown_neighbours.add((i, j))
 
         count -= len(mine_neighbours)
