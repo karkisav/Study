@@ -62,7 +62,10 @@ def transition_model(corpus, page, damping_factor):
     {"1.html": {"2.html", "3.html"}, "2.html": {"3.html"}, "3.html": {"2.html"}}
     """
     N = len(corpus)
-    n = len(corpus[page])
+    if len(corpus[page]) == 0:
+        n = N
+    else:
+        n = len(corpus[page])
 
     pf_random = (1 - damping_factor)/N
     pf_linked = pf_random + damping_factor/n
@@ -70,7 +73,7 @@ def transition_model(corpus, page, damping_factor):
     model = {}
 
     for key in corpus:
-        if key not in corpus[page]:
+        if key not in corpus[page] and bool(corpus[page]):
             model[key] = pf_random
         else:
             model[key] = pf_linked
@@ -85,8 +88,10 @@ def sample_pagerank(corpus, damping_factor, n):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    raise NotImplementedError
-
+    pagerank = {}
+    # simulate a random walk : where you run it n times and decite weather to follow a link or jump
+    # count the number of visits done
+    # normalize
 
 def iterate_pagerank(corpus, damping_factor):
     """
