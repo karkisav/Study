@@ -90,14 +90,22 @@ def sample_pagerank(corpus, damping_factor, n):
     """
     pagerank = {page: 0 for page in corpus.keys()}
 
-    first_sample = random.choice(corpus.keys())
-    pagerank[first_sample] += 1
+    sample = random.choice(list(corpus.keys()))
+    pagerank[sample] += 1
 
     # simulate a random walk : where you run it n times and decite weather to follow a link or jump
-    # count the number of visits done
-    
     for _ in range(n):
-        ...
+        if random.uniform(0,1) < damping_factor:
+            if bool(corpus[sample]):
+                sample = random.choice(list(corpus[sample]))
+            else:
+                sample = random.choice(list(corpus.keys()))
+            # count the number of visits done
+            pagerank[sample] += 1
+        else:
+            sample = random.choice(list(corpus.keys()))
+            # count the number of visits done
+            pagerank[sample] += 1
 
     pagerank = {page: key / n for page, key in pagerank.items()}
     return pagerank
