@@ -198,17 +198,7 @@ class Maze():
                     fill = (220, 235, 113)
 
                 # Explored
-                elif solution is not None and show_explored and (i, j) in self.explored:
-                    fill = (212, 97, 85)
-
-                # Empty cell
-                else:
-                    fill = (237, 240, 252)
-
-                # Draw cell
-                draw.rectangle(
-                    ([(j * cell_size + cell_border, i * cell_size + cell_border),
-                      ((j + 1) * cell_size - cell_border, (i + 1) * cell_size - cell_border)]),
+                elif solution is not None and show_explored and (i, j) in self.explored: fill = (212, 97, 85) # Empty cell else: fill = (237, 240, 252) Draw cell draw.rectangle( ([(j * cell_size + cell_border, i * cell_size + cell_border), ((j + 1) * cell_size - cell_border, (i + 1) * cell_size - cell_border)]),
                     fill=fill
                 )
 

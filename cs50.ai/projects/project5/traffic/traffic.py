@@ -102,7 +102,8 @@ def get_model():
         tf.keras.layers.Flatten(),
 
         # Add a hidden layer with dropout
-        tf.keras.layers.Dense(512, activation="relu"),
+        tf.keras.layers.Dense(128, activation="relu"),
+ 
         tf.keras.layers.Dropout(0.5),
 
         tf.keras.layers.Dense(512, activation="relu"),
