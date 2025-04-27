@@ -1,6 +1,8 @@
 import nltk
 import sys
 
+# Holmes sat in the red armchair and he chuckled.
+
 TERMINALS = """
 Adj -> "country" | "dreadful" | "enigmatical" | "little" | "moist" | "red"
 Adv -> "down" | "here" | "never"
@@ -15,11 +17,11 @@ V -> "smiled" | "tell" | "were"
 """
 
 NONTERMINALS = """
-S -> N V    
-AP -> A | A AP
-NP -> N | D NP | AP NP | N PP
-PP -> P NP
-VP -> V | V NP | V NP PP
+S -> NP VP | S Conj S
+NP -> N | Det NP | Det AdjP N | N PP | Det AdjP N PP | NP Conj NP | Det N P NP | N P N
+VP -> V | V NP | V PP | V NP PP | V Adv | Adv V NP | V Adv | VP Conj VP
+PP -> P NP | P N | Adv P NP
+AdjP -> Adj | Adj AdjP
 """
 
 grammar = nltk.CFG.fromstring(NONTERMINALS + TERMINALS)
@@ -81,8 +83,8 @@ def np_chunk(tree):
     """
     np = []
     for sub_tree in tree:
-        if str(sub_tree[0]) == "NP":
-            np.append(sub_tree[1])
+        if sub_tree.label() == "NP":
+            np.append(sub_tree)
     return np
 
 
